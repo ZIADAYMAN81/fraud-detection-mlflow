@@ -60,7 +60,7 @@ mlflow ui            # then open http://localhost:5000
 ```
 
 ## Related work
-The same methodology (`ColumnTransformer`, SMOTE in an `imblearn` pipeline, `GridSearchCV` on F1, MLflow tags per stage) was applied in a team project on **insurance car-claims fraud** (~6% fraud).
+The same methodology (`ColumnTransformer`, SMOTE in an `imblearn` pipeline, `GridSearchCV` on F1, MLflow tags per stage) was also applied to **insurance car-claims fraud** (~6% fraud).
 
 ## Tech stack
 Python · scikit-learn · imbalanced-learn · MLflow · pandas · NumPy · matplotlib · seaborn
