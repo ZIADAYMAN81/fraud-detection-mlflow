@@ -1,5 +1,7 @@
 # Fraud Detection with MLflow Experiment Tracking
 
+[![tests](https://github.com/ZIADAYMAN81/fraud-detection-mlflow/actions/workflows/tests.yml/badge.svg)](https://github.com/ZIADAYMAN81/fraud-detection-mlflow/actions/workflows/tests.yml)
+
 > Machine Learning coursework, The British University in Egypt, 2026. Author: Ziad Ayman.
 
 Detecting fraudulent online card payments (300,000 transactions, **2.2% fraud**) the way a production team would, from experiments to a monitored scoring service: features built only from the past, a train / validation / test split by **time**, a decision threshold chosen on the validation month, a **money-based** evaluation, and every run tracked in **MLflow**. A second, small medical dataset (diabetes) shows how the same workflow behaves with 768 rows.
@@ -152,3 +154,6 @@ The same Machine Learning course's second fraud problem, vehicle insurance claim
 
 ## Tech stack
 Python · scikit-learn · XGBoost (CUDA) · imbalanced-learn · MLflow (tracking and registry) · FastAPI · pydantic · SQLite · Docker · Streamlit · Plotly · SHAP · pandas · NumPy · pytest
+
+## License
+MIT, see [LICENSE](LICENSE).
