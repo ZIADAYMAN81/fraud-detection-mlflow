@@ -1,0 +1,195 @@
+{
+  "split": {
+    "train": [
+      "2024-01-01",
+      "2024-07-31"
+    ],
+    "validation": [
+      "2024-08-01",
+      "2024-08-31"
+    ],
+    "test": [
+      "2024-09-01",
+      "2024-10-31"
+    ],
+    "rows": {
+      "train": 209111,
+      "validation": 30390,
+      "test": 60194
+    },
+    "test_fraud_rate": 0.0219
+  },
+  "device": "cuda",
+  "review_cost": 5.0,
+  "results": [
+    {
+      "model": "XGBoost",
+      "pr_auc": 0.8577,
+      "roc_auc": 0.9771,
+      "precision": 0.9114,
+      "recall": 0.7485,
+      "f1": 0.822,
+      "recall_at_1pct_fpr": 0.8273,
+      "flag_rate": 0.018,
+      "threshold": 0.7532,
+      "fraud_value_caught_share": 0.9005,
+      "cost": 82184.06,
+      "cost_without_model": 771537.59,
+      "cost_optimal_precision": 0.5054,
+      "cost_optimal_recall": 0.8515,
+      "cost_optimal_flag_rate": 0.0369,
+      "cost_optimal_threshold": 0.2187,
+      "cost_optimal_fraud_value_caught_share": 0.9539,
+      "cost_optimal_cost": 46718.74,
+      "fit_seconds": 3.3
+    },
+    {
+      "model": "Random Forest",
+      "pr_auc": 0.8531,
+      "roc_auc": 0.9701,
+      "precision": 0.9185,
+      "recall": 0.7598,
+      "f1": 0.8317,
+      "recall_at_1pct_fpr": 0.8341,
+      "flag_rate": 0.0181,
+      "threshold": 0.4347,
+      "fraud_value_caught_share": 0.9082,
+      "cost": 76275.49,
+      "cost_without_model": 771537.59,
+      "cost_optimal_precision": 0.7411,
+      "cost_optimal_recall": 0.8174,
+      "cost_optimal_flag_rate": 0.0242,
+      "cost_optimal_threshold": 0.204,
+      "cost_optimal_fraud_value_caught_share": 0.9338,
+      "cost_optimal_cost": 58330.17,
+      "fit_seconds": 48.0
+    },
+    {
+      "model": "Bagging (decision trees)",
+      "pr_auc": 0.8437,
+      "roc_auc": 0.9605,
+      "precision": 0.9142,
+      "recall": 0.7591,
+      "f1": 0.8295,
+      "recall_at_1pct_fpr": 0.8235,
+      "flag_rate": 0.0182,
+      "threshold": 0.4225,
+      "fraud_value_caught_share": 0.9086,
+      "cost": 76012.36,
+      "cost_without_model": 771537.59,
+      "cost_optimal_precision": 0.283,
+      "cost_optimal_recall": 0.8811,
+      "cost_optimal_flag_rate": 0.0683,
+      "cost_optimal_threshold": 0.0599,
+      "cost_optimal_fraud_value_caught_share": 0.96,
+      "cost_optimal_cost": 51387.91,
+      "fit_seconds": 93.4
+    },
+    {
+      "model": "Logistic Regression + SMOTE",
+      "pr_auc": 0.6848,
+      "roc_auc": 0.9566,
+      "precision": 0.7678,
+      "recall": 0.5712,
+      "f1": 0.6551,
+      "recall_at_1pct_fpr": 0.6591,
+      "flag_rate": 0.0163,
+      "threshold": 0.9362,
+      "fraud_value_caught_share": 0.8405,
+      "cost": 128001.35,
+      "cost_without_model": 771537.59,
+      "cost_optimal_precision": 0.2094,
+      "cost_optimal_recall": 0.8538,
+      "cost_optimal_flag_rate": 0.0894,
+      "cost_optimal_threshold": 0.4949,
+      "cost_optimal_fraud_value_caught_share": 0.9487,
+      "cost_optimal_cost": 66473.09,
+      "fit_seconds": 3.3
+    },
+    {
+      "model": "Logistic Regression + undersampling",
+      "pr_auc": 0.6824,
+      "roc_auc": 0.957,
+      "precision": 0.7578,
+      "recall": 0.5712,
+      "f1": 0.6514,
+      "recall_at_1pct_fpr": 0.6606,
+      "flag_rate": 0.0165,
+      "threshold": 0.9376,
+      "fraud_value_caught_share": 0.8464,
+      "cost": 123505.82,
+      "cost_without_model": 771537.59,
+      "cost_optimal_precision": 0.2641,
+      "cost_optimal_recall": 0.8,
+      "cost_optimal_flag_rate": 0.0664,
+      "cost_optimal_threshold": 0.6364,
+      "cost_optimal_fraud_value_caught_share": 0.9303,
+      "cost_optimal_cost": 73767.83,
+      "fit_seconds": 0.6
+    },
+    {
+      "model": "Logistic Regression (class-weighted)",
+      "pr_auc": 0.6775,
+      "roc_auc": 0.9568,
+      "precision": 0.7696,
+      "recall": 0.572,
+      "f1": 0.6562,
+      "recall_at_1pct_fpr": 0.6561,
+      "flag_rate": 0.0163,
+      "threshold": 0.9356,
+      "fraud_value_caught_share": 0.8497,
+      "cost": 120870.01,
+      "cost_without_model": 771537.59,
+      "cost_optimal_precision": 0.2382,
+      "cost_optimal_recall": 0.8273,
+      "cost_optimal_flag_rate": 0.0762,
+      "cost_optimal_threshold": 0.5718,
+      "cost_optimal_fraud_value_caught_share": 0.9429,
+      "cost_optimal_cost": 66942.56,
+      "fit_seconds": 1.8
+    }
+  ],
+  "best_model": "XGBoost",
+  "shap_top_features": [
+    {
+      "feature": "shipping_distance_km",
+      "mean_abs_shap": 1.2859
+    },
+    {
+      "feature": "security_checks_failed",
+      "mean_abs_shap": 0.6274
+    },
+    {
+      "feature": "channel_app",
+      "mean_abs_shap": 0.5797
+    },
+    {
+      "feature": "account_age_days",
+      "mean_abs_shap": 0.5736
+    },
+    {
+      "feature": "avs_match",
+      "mean_abs_shap": 0.5075
+    },
+    {
+      "feature": "country_mismatch",
+      "mean_abs_shap": 0.384
+    },
+    {
+      "feature": "amount",
+      "mean_abs_shap": 0.3609
+    },
+    {
+      "feature": "prior_transactions",
+      "mean_abs_shap": 0.2871
+    },
+    {
+      "feature": "amount_to_profile_avg",
+      "mean_abs_shap": 0.1453
+    },
+    {
+      "feature": "amount_to_prior_mean",
+      "mean_abs_shap": 0.1441
+    }
+  ]
+}
