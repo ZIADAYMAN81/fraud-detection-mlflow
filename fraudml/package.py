@@ -133,7 +133,12 @@ def register_model(pipe, example: pd.DataFrame, meta: dict, tracking_uri: str) -
     from mlflow.models import infer_signature
 
     mlflow.set_tracking_uri(tracking_uri)
-    mlflow.set_experiment("fraud-detection-production")
+    name = "fraud-detection-production"
+    if mlflow.get_experiment_by_name(name) is None and tracking_uri.startswith("sqlite:///"):
+        # Keep artifacts next to the tracking database instead of in the current working directory.
+        db = Path(tracking_uri[len("sqlite:///"):]).resolve()
+        mlflow.create_experiment(name, artifact_location=(db.parent / "mlartifacts").as_uri())
+    mlflow.set_experiment(name)
     test_pr_auc = meta["test_metrics"]["cost_optimal"]["pr_auc"]
     with mlflow.start_run(run_name="production-xgboost") as run:
         mlflow.log_params({"train_period": "/".join(meta["train_period"]), "test_period": "/".join(meta["test_period"]),
