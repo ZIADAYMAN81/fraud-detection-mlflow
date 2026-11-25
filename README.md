@@ -77,5 +77,8 @@ notebooks/        # the original coursework notebook
 ## What changed from the original coursework
 The original notebook (kept in `notebooks/`) split the data randomly, used a fixed 0.5 threshold and reported bagging as best (F1 0.83, ROC-AUC 0.975). This version rebuilds it as a tested package with a time-based split, past-only features, tuned GPU XGBoost, validation-chosen thresholds, a cost analysis and SHAP explanations. The ensemble models reach the same F1 on a harder, more realistic evaluation, and the cost analysis shows what that means in money.
 
+## Related project
+The same Machine Learning course's second fraud problem, vehicle insurance claims (15,420 claims, 6% fraud), is in [insurance-claim-fraud-detection](https://github.com/ZIADAYMAN81/insurance-claim-fraud-detection): evaluated on a future year, with SMOTE, GPU XGBoost, bootstrap confidence intervals and MLflow tracking.
+
 ## Tech stack
 Python · scikit-learn · XGBoost (CUDA) · imbalanced-learn · MLflow · SHAP · pandas · NumPy · matplotlib · pytest
