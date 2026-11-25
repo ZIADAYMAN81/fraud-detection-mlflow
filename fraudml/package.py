@@ -126,19 +126,25 @@ def score_profile(scores: np.ndarray, bins: int = 10) -> dict:
     return {"edges": edges.tolist(), "shares": (counts / counts.sum()).tolist()}
 
 
+def use_experiment(tracking_uri: str, name: str) -> None:
+    """Select an MLflow experiment; with a SQLite store, artifacts go next to the database file instead of the
+    current working directory."""
+    import mlflow
+
+    mlflow.set_tracking_uri(tracking_uri)
+    if mlflow.get_experiment_by_name(name) is None and tracking_uri.startswith("sqlite:///"):
+        db = Path(tracking_uri[len("sqlite:///"):]).resolve()
+        mlflow.create_experiment(name, artifact_location=(db.parent / "mlartifacts").as_uri())
+    mlflow.set_experiment(name)
+
+
 def register_model(pipe, example: pd.DataFrame, meta: dict, tracking_uri: str) -> dict:
     """Log the run, register a new model version, and promote it to "champion" only if it beats the current one."""
     import mlflow
     from mlflow import MlflowClient
     from mlflow.models import infer_signature
 
-    mlflow.set_tracking_uri(tracking_uri)
-    name = "fraud-detection-production"
-    if mlflow.get_experiment_by_name(name) is None and tracking_uri.startswith("sqlite:///"):
-        # Keep artifacts next to the tracking database instead of in the current working directory.
-        db = Path(tracking_uri[len("sqlite:///"):]).resolve()
-        mlflow.create_experiment(name, artifact_location=(db.parent / "mlartifacts").as_uri())
-    mlflow.set_experiment(name)
+    use_experiment(tracking_uri, "fraud-detection-production")
     test_pr_auc = meta["test_metrics"]["cost_optimal"]["pr_auc"]
     with mlflow.start_run(run_name="production-xgboost") as run:
         mlflow.log_params({"train_period": "/".join(meta["train_period"]), "test_period": "/".join(meta["test_period"]),

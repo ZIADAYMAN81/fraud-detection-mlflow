@@ -25,8 +25,9 @@ from . import data, evaluate, features, models  # noqa: E402
 
 
 def setup_mlflow(uri: str, experiment: str) -> None:
-    mlflow.set_tracking_uri(uri)
-    mlflow.set_experiment(experiment)
+    from .package import use_experiment
+
+    use_experiment(uri, experiment)
 
 
 def run_transactions(args) -> dict:
