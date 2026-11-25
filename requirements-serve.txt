@@ -1,0 +1,10 @@
+# Serving only. scikit-learn and XGBoost are pinned to the versions the model bundle was trained with
+# (recorded in models/fraud_xgboost/metadata.json); unpickling with other versions is not guaranteed to work.
+scikit-learn==1.6.1
+xgboost-cpu==2.1.4
+pandas==2.2.2
+numpy==2.0.2
+joblib==1.5.3
+fastapi>=0.110
+uvicorn>=0.23
+pydantic>=2.5

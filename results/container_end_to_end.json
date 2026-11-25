@@ -1,0 +1,30 @@
+{
+ "transactions_replayed": 299695,
+ "replay_seconds": 23.7,
+ "throughput_per_second_batched": 12627,
+ "sep_oct_pr_auc_via_container": 0.8566,
+ "sep_oct_flag_rate": 0.048,
+ "customers_in_history": 6000,
+ "single_request_ms_with_explanations": {
+  "median": 57.2,
+  "p95": 62.9,
+  "p99": 100.5
+ },
+ "single_request_ms_without_explanations": {
+  "median": 52.1,
+  "p95": 56.8,
+  "p99": 59.3
+ },
+ "single_request_ms_with_history_update": {
+  "median": 55.9,
+  "p95": 62.2,
+  "p99": 74.2
+ },
+ "health": {
+  "status": "ok",
+  "model_loaded": true,
+  "uptime_seconds": 93.7,
+  "scored": 300595,
+  "flag_rate": 0.0485
+ }
+}

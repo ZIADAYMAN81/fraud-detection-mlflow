@@ -1,0 +1,9 @@
+{
+ "note": "Median single-transaction latency of POST /score, 200 requests after warm-up, laptop (Ryzen CPU), Docker Desktop on Windows.",
+ "inside_container_ms": {"without_explanations": 7.8, "with_explanations": 14.4},
+ "in_process_python_ms": {"score_without_explanations": 6.5, "score_with_explanations": 14.9, "online_features": 0.02,
+                          "preprocessing": 2.7, "xgboost_predict_proba": 4.6},
+ "from_windows_host_via_docker_port_forwarding_ms": {"without_explanations": 51.9, "with_explanations": 57.2},
+ "finding": "The ~44 ms difference is Docker Desktop's Windows-to-Linux-VM port forwarding for request bodies (same client code: 7.8 ms inside the container, 51.9 ms from Windows; GET /health without a body takes 1.5 ms). Limiting XGBoost to 1 or 4 threads changed nothing.",
+ "batch": {"transactions_per_second_full_replay": 12627, "before_batching_database_commits": 329}
+}

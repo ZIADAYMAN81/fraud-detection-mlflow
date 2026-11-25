@@ -1,0 +1,20 @@
+{
+ "transactions_replayed": 299695,
+ "replay_seconds": 909.9,
+ "throughput_per_second_batched": 329,
+ "sep_oct_pr_auc_via_container": 0.8566,
+ "sep_oct_flag_rate": 0.048,
+ "customers_in_history": 6000,
+ "single_request_ms": {
+  "median": 57.2,
+  "p95": 61.3,
+  "p99": 100.4
+ },
+ "health": {
+  "status": "ok",
+  "model_loaded": true,
+  "uptime_seconds": 946.5,
+  "scored": 299995,
+  "flag_rate": 0.0486
+ }
+}

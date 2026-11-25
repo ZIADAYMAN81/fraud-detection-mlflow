@@ -14,6 +14,12 @@ NUMERIC = [
 ]
 CATEGORICAL = ["channel", "merchant_category", "country"]
 
+# The production model drops `prior_transactions`: it counts a customer's purchases since the data began, so it
+# grows every month (mean 2.5 in January, 47 in October) and pushed later traffic outside the training range.
+# Monitoring showed the model's score distribution drifting (PSI 0.44 by October); without it, PR-AUC changes by
+# 0.001 and the drift disappears (PSI 0.001). A 30-day count was tested as a replacement and added nothing.
+PRODUCTION_NUMERIC = [c for c in NUMERIC if c != "prior_transactions"]
+
 
 def add_features(df: pd.DataFrame) -> pd.DataFrame:
     """Return a copy with engineered columns. Rows must be sorted by time (load_transactions does this)."""
